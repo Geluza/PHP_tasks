@@ -1,25 +1,5 @@
 <?php
-//Реализуйте функцию isPalindrome(), которая принимает на вход слово и определяет, 
-//является ли оно палиндромом, а затем возвращает логическое значение.
-//Чтобы определить палиндром, достаточно сравнивать попарно символы с обоих концов слова. 
-//Если они все равны, это палиндром. Решите задачу без использования реверса строки (функция strrev()).
 
-$word = 'radar';
-function isPalindrome(string $word)
-{
-    $lastIndex = mb_strlen($word) - 1;
-    $middleIndex = $lastIndex / 2;
-    for ($i = 0; $i < $middleIndex; $i++) {
-        $symbol = mb_substr($word, $i, 1);
-        $mirroredSymbol = mb_substr($word, $lastIndex - $i, 1);
-        if ($symbol !== $mirroredSymbol) {
-            return false;
-        }
-    }
-    return true;
-}
-
-isPalindrome($word);
 //Реализуйте функцию truncate(), которая обрезает переданный текст и добавляет в конце многоточие. Подобная логика часто используется на сайтах, чтобы отобразить длинный текст в сокращенном виде. Функция принимает два параметра:
 //Строка, которую нужно обрезать
 //Число символов, которые нужно оставить
@@ -30,8 +10,10 @@ $count = 10;
 function truncate($str, $count) {
     $truncated_text = substr($str, 0, $count);
     $truncated_text .= "...";
-    return $truncated_text;
+    print_r("$truncated_text\n");
 }
+
+truncate($str, $count);
 
 //Реализуйте функцию getHiddenCard(), которая принимает на вход номер кредитки, 
 //состоящий из 16 цифр, в виде строки и возвращает его скрытую версию, которая может использоваться на сайте для отображения. 
@@ -43,8 +25,11 @@ $cardNumber = 2034399002125581;
 
 function getHiddenCard($cardNumber, $starsCount = 4) {
     $visibleVersion = substr($cardNumber, 12);
-    return str_repeat('*', $starsCount) . $visibleVersion;
+    $result = str_repeat('*', $starsCount) . $visibleVersion;
+    print_r("$result\n");
 }
+
+getHiddenCard($cardNumber);
 
 //Реализуйте функцию getFormattedBirthday(), которая принимает на вход три параметра: день, месяц и год рождения. 
 //Она возвращает их строкой в отформатированном виде, например: 20-02-1953.
@@ -55,9 +40,10 @@ $year = 1991;
 
 function getFormattedBirthday($day, $month, $year) {
     $result = sprintf("%02d-%02d-%04d", $day, $month, $year);
-    return $result;
+    print_r("$result\n");
  }
 
+ getFormattedBirthday($day, $month, $year);
 
 //Реализуйте функцию normalizeUrl(), которая выполняет так называемую нормализацию данных. 
  //Она принимает адрес сайта и возвращает его с https:// в начале.
@@ -77,9 +63,10 @@ function normalizeUrl($adress) {
     } else {
         $result = "https://{$adress}";
     }
-    return $result;
+    print_r("$result\n");
 }
 
+normalizeUrl($adress);
 //Модифицируйте функцию printNumbers() так, чтобы она выводила числа в обратном порядке. 
 //Для этого нужно идти от верхней границы к нижней. То есть, счетчик должен быть инициализирован максимальным значением, 
 //а в теле цикла его нужно уменьшать до нижней границы. Нижняя граница равна единице:
@@ -92,9 +79,10 @@ function printNumbers($firstNumber)
         print_r("{$i}\n");
         $i = $i - 1;
     }
-    print_r('finished!');
+    print_r("finished!\n");
 }
 
+printNumbers($firstNumber);
 //Реализуйте функцию joinNumbersFromRange(), которая объединяет все числа из диапазона в строку. Функция должна вернуть полученную строку
 
 $a = 2;
@@ -109,9 +97,10 @@ function joinNumbersFromRange($a, $b) {
         $sum = $sum + $i;
         $i = $i + 1;
     }
-    return $res;
+    print_r("$res\n");
 }
 
+joinNumbersFromRange($a, $b);
 //Реализуйте функцию sumOfSeries(), которая считает сумму ряда целых чисел. Ряд задается двумя числами — начальным и конечным.
 //Функция принимает два аргумента-числа и возвращает сумму ряда. Например, для аргументов 4 и 7 сумма будет 4 + 5 + 6 + 7 = 22. Если начальное и конечное числа равны, то результатом будет то же число:
 
@@ -125,14 +114,21 @@ function sumOfSeries($start, $end) {
         $sum += $start;
     }
  
-    return $sum;
+    print_r("$sum\n");
 }
 
+sumOfSeries($start, $end);
 //Реализуйте функцию getCustomDate(), которая принимает дату в формате timestamp и возвращает ее в формате 15/03/1985:
 
 $timestamp = 1532435204;
 
 function getCustomDate($timestamp) {
     $date = date('d/m/Y', $timestamp);
-    return $date;
+    print_r("$date\n");
 }
+
+getCustomDate($timestamp);
+
+
+?>
+
